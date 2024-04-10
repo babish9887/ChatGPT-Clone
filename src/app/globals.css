@@ -30,4 +30,22 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+      .scrollbar-width-none::-webkit-scrollbar {
+        width: 0;
+      }
+      .scrollbar-width-none {
+        scrollbar-width: none;
+      }
+}
+
+
+
+@layer components{
+  .infoText{
+    @apply p-4  bg-[#212121] border border-slate-700/80 rounded-lg max-w-[300px] hover:bg-[#2f2f2f]
+  }
+
+  .chatRow{
+    @apply transition-all duration-200 ease-out rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-gray-700/70 cursor-pointer text-gray-300
+  }
 }
