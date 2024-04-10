@@ -40,7 +40,7 @@ const timestampDate = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds 
 const timeDifferenceSeconds = Math.floor((now - timestampDate) / 1000);
 
 // Check if the timestamp is older than 60 seconds
-if (timeDifferenceSeconds < 60) {
+if (timeDifferenceSeconds < 10) {
         setShowTypingEffect(true);
 
         const text = message.text;
