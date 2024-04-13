@@ -7,11 +7,12 @@ function Message({ message }: { message: any }) {
 
   const [typingEffect, setTypingEffect] = useState('');
   const [showTypingEffect, setShowTypingEffect] = useState(false);
+  const [formattedText, setFormattedText] = useState('');
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(message.text)
       .then(() => {
-        toast.success('Text copied to clipboard successfully');
+        toast.success('Text copied to clipboard');
       })
       .catch((error) => {
         toast.error('Error copying text to clipboard!');
@@ -26,24 +27,27 @@ function Message({ message }: { message: any }) {
       else newArray += '<b>' + responseArray[i] + '</b>';
     }
     let newResponse = newArray.split('*').join('</br>');
+    setFormattedText(newResponse);
     return newResponse;
   };
 
   useEffect(() => {
     if (isChatGPT) {
+      formatText();
+
       const now = new Date();
       const timestamp=message.createdAt
-     // Convert Firestore Timestamp to JavaScript Date object
-const timestampDate = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
+      // Convert Firestore Timestamp to JavaScript Date object
+      const timestampDate = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
 
-// Calculate the time difference in seconds
-const timeDifferenceSeconds = Math.floor((now - timestampDate) / 1000);
+      // Calculate the time difference in seconds
+      const timeDifferenceSeconds = Math.floor((now - timestampDate) / 1000);
 
-// Check if the timestamp is older than 60 seconds
-if (timeDifferenceSeconds < 10) {
+      // Check if the timestamp is older than 60 seconds
+      if (timeDifferenceSeconds < 10) {
         setShowTypingEffect(true);
 
-        const text = message.text;
+        const text = formattedText;
         const typingDelay = 10; // Adjust this value for typing speed
         let currentIndex = 0;
 
@@ -61,13 +65,13 @@ if (timeDifferenceSeconds < 10) {
         setShowTypingEffect(false);
       }
     }
-  }, [isChatGPT, message.createdAt, message.text]);
+  }, [isChatGPT, formattedText, message.createdAt]);
 
   return (
     <div className={`py-5 text-white`}>
       <div className='flex space-x-5 px-10 max-w-2xl mx-auto'>
         <img src={message.user.avatar} alt='' className='h-8 w-8 rounded-full' />
-        <p dangerouslySetInnerHTML={{ __html: showTypingEffect ? typingEffect : formatText() }} />
+       {message.user.name === 'ChatGPT' ? <p dangerouslySetInnerHTML={{ __html: showTypingEffect ? typingEffect : formattedText }} /> : <p>{message.text}</p>}
       </div>
       {isChatGPT && (
         <div className='flex items-center justify-center gap-2 mt-3'>

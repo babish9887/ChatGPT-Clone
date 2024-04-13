@@ -115,9 +115,9 @@ function ChatInput({ id }: { id: string }) {
     <div className="flex items-center justify-center flex-col  sm:w-full px-5">
       {messages?.empty &&(
 
-            <div className="w-full h-auto grid grid-cols-2 grid-rows-2 gap-4 relative lg:max-w-[40rem]">
+      <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-4 relative lg:max-w-[40rem]">
 
-        <div className={divStyle} onClick={()=>handleQueryClick("Plan a trip to see the best of New York in 3 days")}>
+        <div className={`${divStyle} hidden sm:block`} onClick={()=>handleQueryClick("Plan a trip to see the best of New York in 3 days")}>
           <div>
             <h2>Plan a trip</h2>
             <p className="text-gray-400 text-sm">to see the best of New York in 3 days</p>
@@ -125,7 +125,7 @@ function ChatInput({ id }: { id: string }) {
           <ArrowUpIcon className={arrowStyle} />
         </div>
 
-        <div className={divStyle} onClick={()=>handleQueryClick("Write an email to request a quote from local plumbers")}>
+        <div className={`${divStyle} hidden sm:block`} onClick={()=>handleQueryClick("Write an email to request a quote from local plumbers")}>
           <div>
             <h2>Write an email</h2>
             <p className="text-gray-400 text-sm">to request a quote from local plumbers</p>
