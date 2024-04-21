@@ -12,6 +12,7 @@ function Chat({id}: {
     id:string;
 }) {
       const {data:session}=useSession()
+      
       const [messages]=useCollection(session && query(
             collection(db,'users',session?.user?.email, "chats", id, 'messages' ),
             orderBy('createdAt', 'asc')
