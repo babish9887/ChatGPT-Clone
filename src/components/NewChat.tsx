@@ -20,6 +20,24 @@ function NewChat() {
     router.push(`/chat/${doc.id}`);
 
   }
+
+//   const createNewChat = async () => {
+//       if (!session || !session.user || !session.user.email) {
+//         // Handle the case when session or session.user is undefined
+//         return;
+//       }
+    
+//       const doc = await addDoc(
+//         collection(db, "users", session.user.email, 'chats'),
+//         {
+//           userId: session.user.email,
+//           createdAt: serverTimestamp()
+//         }
+//       );
+//     router.push(`/chat/${doc.id}`);
+
+//     };
+    
   return (
     <div 
     onClick={createNewChat}
