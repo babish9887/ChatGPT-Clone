@@ -52,7 +52,7 @@ function ChatInput({ id }: { id: string }) {
       notification = toast.loading("ChatGPT is thinking....");
 
 
-      const res = await axios.post(`http://localhost:3000/api/askQuestion`, {
+      const res = await axios.post(`/api/askQuestion`, {
         prompt: input,
         id,
         model,
@@ -93,7 +93,7 @@ function ChatInput({ id }: { id: string }) {
         notification = toast.loading("ChatGPT is thinking....");
   
   
-        const res = await axios.post(`http://localhost:3000/api/askQuestion`, {
+        const res = await axios.post(`/api/askQuestion`, {
           prompt: input,
           id,
           model,
