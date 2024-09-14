@@ -69,9 +69,10 @@ function Message({ message }: { message: any }) {
 
   return (
     <div className={`py-5 text-white`}>
-      <div className='flex space-x-5 px-10 max-w-2xl mx-auto'>
-        <img src={message.user.avatar} alt='' className='h-8 w-8 rounded-full' />
-       {message.user.name === 'ChatGPT' ? <p dangerouslySetInnerHTML={{ __html: showTypingEffect ? typingEffect : formattedText }} /> : <p>{message.text}</p>}
+      <div className={`flex space-x-5 px-10 max-w-2xl mx-auto  ${message.user.name==="ChatGPT"? "":" flex-row-reverse"}`}>
+        <img src={message.user.avatar} alt='' className='h-8 w-8 rounded-full mx-3 ' />
+       {/* {message.user.name === 'ChatGPT' ? <p dangerouslySetInnerHTML={{ __html: showTypingEffect ? typingEffect : formattedText }} /> : <p>{message.text}</p>} */}
+           {message.text}
       </div>
       {isChatGPT && (
         <div className='flex items-center justify-center gap-2 mt-3'>
