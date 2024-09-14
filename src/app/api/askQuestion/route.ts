@@ -29,7 +29,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
             user: {
                 _id: "ChatGPT",
                 name: "ChatGPT",
-                avatar: 'https://static.vecteezy.com/system/resources/previews/021/059/825/original/chatgpt-logo-chat-gpt-icon-on-green-background-free-vector.jpg'
+                avatar: '/ChatGPT.png'
             }
         };
 

@@ -1,8 +1,21 @@
-import { ClipboardIcon, PencilIcon } from '@heroicons/react/24/outline';
 import React, { useEffect, useState } from 'react';
+import { ClipboardIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 
-function Message({ message }: { message: any }) {
+interface User {
+  name: string;
+  avatar: string;
+}
+
+interface MessageProps {
+  message: {
+    user: User;
+    text: string;
+    createdAt: { seconds: number; nanoseconds: number };
+  };
+}
+
+const Message: React.FC<MessageProps> = ({ message }) => {
   const isChatGPT = message.user.name === 'ChatGPT';
 
   const [typingEffect, setTypingEffect] = useState('');
@@ -20,9 +33,9 @@ function Message({ message }: { message: any }) {
   };
 
   const formatText = () => {
-    let responseArray = message?.text.split('**');
+    let responseArray = message.text.split('**');
     let newArray = '';
-    for (let i = 0; i < responseArray?.length; i++) {
+    for (let i = 0; i < responseArray.length; i++) {
       if (i === 0 || i % 2 !== 1) newArray += responseArray[i];
       else newArray += '<b>' + responseArray[i] + '</b>';
     }
@@ -36,14 +49,11 @@ function Message({ message }: { message: any }) {
       formatText();
 
       const now = new Date();
-      const timestamp=message.createdAt
-      // Convert Firestore Timestamp to JavaScript Date object
+      const timestamp = message.createdAt;
       const timestampDate = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
 
-      // Calculate the time difference in seconds
-      const timeDifferenceSeconds = Math.floor((now - timestampDate) / 1000);
+      const timeDifferenceSeconds = Math.floor((now.getTime() - timestampDate.getTime()) / 1000);
 
-      // Check if the timestamp is older than 60 seconds
       if (timeDifferenceSeconds < 10) {
         setShowTypingEffect(true);
 
@@ -68,11 +78,14 @@ function Message({ message }: { message: any }) {
   }, [isChatGPT, formattedText, message.createdAt]);
 
   return (
-    <div className={`py-5 text-white`}>
-      <div className={`flex space-x-5 px-10 max-w-2xl mx-auto  ${message.user.name==="ChatGPT"? "":" flex-row-reverse"}`}>
-        <img src={message.user.avatar} alt='' className='h-8 w-8 rounded-full mx-3 ' />
-       {/* {message.user.name === 'ChatGPT' ? <p dangerouslySetInnerHTML={{ __html: showTypingEffect ? typingEffect : formattedText }} /> : <p>{message.text}</p>} */}
-           {message.text}
+    <div className="py-5 text-white">
+      <div className={`flex space-x-5 px-5 max-w-2xl mx-auto items-center ${isChatGPT ? "p-0" : "flex-row-reverse"}`}>
+        <img src={message.user.avatar} alt='' className={`h-8 w-8 rounded-full ${message.user.name==="ChatGPT"?"":"ml-3"} `} />
+        <span className={`${!isChatGPT ? "bg-[#2f2f2f] p-3 rounded-full" : ""}`}>
+          {/* {isChatGPT ? (showTypingEffect ? typingEffect : <span dangerouslySetInnerHTML={{ __html: formattedText }} />) : message.text} */}
+          {/* {message.text} */}
+          {isChatGPT ? <span dangerouslySetInnerHTML={{ __html: formattedText }} />:message.text}
+        </span>
       </div>
       {isChatGPT && (
         <div className='flex items-center justify-center gap-2 mt-3'>

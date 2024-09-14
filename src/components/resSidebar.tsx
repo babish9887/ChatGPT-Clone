@@ -61,13 +61,13 @@ function SideBar({showSidebar}:any) {
       ref={logoutRef}
       className='border border-slate-300/50 box-border z-40 absolute w-11/12 h-[150px] bg-[#212121] rounded-lg bottom-16 flex flex-col' style={{display: logout? "block": "none"}}>
       <div className='w-full h-2/3 p-2 '>
-      <button className=' flex items-center w-full h-1/2 rounded-lg hover:bg-slate-700/50 text-left' >
+      <button className=' flex items-center  w-full h-1/2 rounded-lg hover:bg-[#313131] text-left' >
         <span>
           <ClipboardDocumentListIcon className='h-6 w-6 mr-3'/>
         </span>
         Customize ChatGPT
         </button>
-       <button className='flex items-center w-full h-1/2 rounded-lg hover:bg-slate-700/50  text-left'>
+       <button className='flex items-center w-full h-1/2 rounded-lg hover:bg-[#313131]  text-left'>
         <span>
           <Cog6ToothIcon className='w-6 h-6 mr-3'/>
           </span>
@@ -76,7 +76,7 @@ function SideBar({showSidebar}:any) {
       </div>
       <div className='w-full h-1/3 px-2 pb-2'>
 
-       <button className='flex items-center w-full h-full rounded-lg  hover:bg-slate-700/50  text-left'
+       <button className='flex items-center w-full h-full rounded-lg  hover:bg-[#313131]  text-left'
        onClick={()=>signOut()}>
         <span>
            <ArrowRightStartOnRectangleIcon className='w-6 h-6 mr-3' />
@@ -99,13 +99,13 @@ function SideBar({showSidebar}:any) {
       {session && (
         <div
         onClick={handlelogoutbtn}
-        className='absolute bottom-0 px-3 py-3 w-11/12 flex  items-center justify-start cursor-pointer rounded-lg hover:bg-slate-700/50 transition-all duration-200 ease-in-out'>
+        className='absolute bottom-0 px-3 py-3 w-11/12 flex  items-center justify-start cursor-pointer rounded-lghover:bg-[#313131] transition-all duration-200 ease-in-out'>
         <img src={session.user?.image} alt=''
         className='h-8 w-8 rounded-full  mr-3'/>
         <h2 className='text-xl'>{session.user?.name}</h2>
         </div>
       )}
-      <XMarkIcon className='absolute top-0 p-2 w-12 h-12 right-0 hover:cursor-pointer hover:bg-gray-700/50 border border-gray-600/80 mr-2 mt-2 rounded-md' onClick={showSidebar}/>
+      <XMarkIcon className='absolute top-0 p-2 w-12 h-12 right-0 hover:cursor-pointer hover:bg-[#313131] border border-gray-600/80 mr-2 mt-2 rounded-md' onClick={showSidebar}/>
     </div>
   )
 }

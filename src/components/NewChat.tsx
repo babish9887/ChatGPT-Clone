@@ -21,22 +21,6 @@ function NewChat() {
 
   }
 
-//   const createNewChat = async () => {
-//       if (!session || !session.user || !session.user.email) {
-//         // Handle the case when session or session.user is undefined
-//         return;
-//       }
-    
-//       const doc = await addDoc(
-//         collection(db, "users", session.user.email, 'chats'),
-//         {
-//           userId: session.user.email,
-//           createdAt: serverTimestamp()
-//         }
-//       );
-//     router.push(`/chat/${doc.id}`);
-
-//     };
     
   return (
     <div 
@@ -45,10 +29,10 @@ function NewChat() {
             {/* <PlusIcon className='h-4 w-4' /> */}
             <div className='flex gap-2'>
 
-            <div className="bg-white w-7 hidden md:flex p-[2px] rounded-full overflow-hidden">
+            <div className="bg-white w-7 hidden md:flex p-[2px] rounded-full overflow-hidden hover:bg-[#313131]">
             <Image src={'https://static.vecteezy.com/system/resources/previews/021/059/827/non_2x/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg'} alt="ChatGPT logog" width={26} height={26}/>
             </div>
-            <p  className='flex items-center justify-between font-semibold hidden sm:flex '>New chat </p>
+            <p  className='items-center justify-between font-semibold hidden sm:flex '>New chat </p>
             </div>
             <span ><PencilSquareIcon className='h-6 w-6 sm:h-4 sm:w-4'/></span>
 

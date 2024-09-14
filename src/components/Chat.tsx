@@ -18,12 +18,12 @@ function Chat({id}: {
             orderBy('createdAt', 'asc')
       ))
   return (
-    <div className="flex-1 flex-col h-screen overflow-y-auto">
+    <div className="flex-1 flex-col h-screen overflow-y-auto ">
 
       {messages?.empty && (
             <div className=" gap-2 w-full flex items-center justify-center flex-col h-full">
-            <div className="bg-white w-14 rounded-full overflow-hidden">
-            <Image src={'https://static.vecteezy.com/system/resources/previews/021/059/827/non_2x/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg'} alt="ChatGPT logog" width={150} height={150}/>
+            <div className=" min-w-20 w-auto max-w-24 rounded-full overflow-hidden">
+            <Image src={'/ChatGPT.png'} alt="ChatGPT logo" width={150} height={150}/>
             </div>
             <p className=" text-center text-white text-2xl font-bold">
                   How can I help you today?

@@ -56,13 +56,13 @@ function SideBar() {
       ref={logoutRef}
       className='border  border-slate-300/50 box-border z-50 absolute w-11/12 h-[150px] bg-[#212121] rounded-lg bottom-16 flex flex-col' style={{display: logout? "block": "none"}}>
       <div className='w-full h-2/3 p-2 '>
-      <button className=' flex items-center w-full h-1/2 rounded-lg hover:bg-slate-700/50 text-left' >
+      <button className=' flex items-center px-2 w-full h-1/2 rounded-lg hover:bg-[#313131] text-left' >
         <span>
           <ClipboardDocumentListIcon className='h-6 w-6 mr-3'/>
         </span>
         Customize ChatGPT
         </button>
-       <button className='flex items-center w-full h-1/2 rounded-lg hover:bg-slate-700/50  text-left'>
+       <button className='flex items-center  px-2 w-full h-1/2 rounded-lg hover:bg-[#313131]  text-left'>
         <span>
           <Cog6ToothIcon className='w-6 h-6 mr-3'/>
           </span>
@@ -71,7 +71,7 @@ function SideBar() {
       </div>
       <div className='w-full h-1/3 px-2 pb-2'>
 
-       <button className='flex items-center w-full h-full rounded-lg  hover:bg-slate-700/50  text-left'
+       <button className='flex items-center  px-2 w-full h-full rounded-lg  hover:bg-[#313131]  text-left'
        onClick={()=>signOut()}>
         <span>
            <ArrowRightStartOnRectangleIcon className='w-6 h-6 mr-3' />
@@ -94,7 +94,7 @@ function SideBar() {
       {session && (
         <div
         onClick={handlelogoutbtn}
-        className=' py-2 px-3 w-full flex items-center justify-start cursor-pointer rounded-lg hover:bg-slate-700/50 transition-all duration-200 ease-in-out'>
+        className=' py-2 px-3 w-full flex items-center justify-start cursor-pointer rounded-lg hover:bg-[#313131] transition-all duration-200 ease-in-out'>
         <img src={session.user?.image} alt=''
         className='h-8 w-8 rounded-full  mr-3'/>
         <h2 className='text-xl hidden md:flex'>{session.user?.name}</h2>
