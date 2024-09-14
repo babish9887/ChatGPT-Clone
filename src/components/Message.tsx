@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ClipboardIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 
@@ -21,6 +21,8 @@ const Message: React.FC<MessageProps> = ({ message }) => {
   const [typingEffect, setTypingEffect] = useState('');
   const [showTypingEffect, setShowTypingEffect] = useState(false);
   const [formattedText, setFormattedText] = useState('');
+
+  const messageEndRef = useRef<HTMLDivElement | null>(null);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(message.text)
@@ -77,14 +79,21 @@ const Message: React.FC<MessageProps> = ({ message }) => {
     }
   }, [isChatGPT, formattedText, message.createdAt]);
 
+  useEffect(() => {
+    // Scroll to the end of the container
+    if (messageEndRef.current) {
+      messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [message.text]); // Adjust dependencies if necessary
+
   return (
     <div className="py-5 text-white">
       <div className={`flex space-x-5 px-5 max-w-2xl mx-auto items-center ${isChatGPT ? "p-0" : "flex-row-reverse"}`}>
         <img src={message.user.avatar} alt='' className={`h-8 w-8 rounded-full ${message.user.name==="ChatGPT"?"":"ml-3"} `} />
         <span className={`${!isChatGPT ? "bg-[#2f2f2f] p-3 rounded-full" : ""}`}>
-          {/* {isChatGPT ? (showTypingEffect ? typingEffect : <span dangerouslySetInnerHTML={{ __html: formattedText }} />) : message.text} */}
-          {/* {message.text} */}
+          {/* {isChatGPT ? <span dangerouslySetInnerHTML={{ __html: formattedText }} /> : message.text} */}
           {isChatGPT ? <span dangerouslySetInnerHTML={{ __html: formattedText }} />:message.text}
+          
         </span>
       </div>
       {isChatGPT && (
@@ -92,6 +101,7 @@ const Message: React.FC<MessageProps> = ({ message }) => {
           <ClipboardIcon className='w-4 hover:cursor-pointer' onClick={copyToClipboard} />
         </div>
       )}
+      <div ref={messageEndRef} />
     </div>
   );
 }
