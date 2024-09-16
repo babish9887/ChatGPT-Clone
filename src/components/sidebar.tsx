@@ -51,7 +51,7 @@ function SideBar() {
 
 
   return (
-    <div className='p-2 sm:overflow-visible hidden flex-col h-screen relative md:flex  md:w-full'>
+    <div className='p-2  sm:overflow-visible hidden flex-col h-screen relative md:flex  md:w-full'>
       <div 
       ref={logoutRef}
       className='border  border-slate-300/50 box-border z-50 absolute w-11/12 h-[150px] bg-[#212121] rounded-lg bottom-16 flex flex-col' style={{display: logout? "block": "none"}}>

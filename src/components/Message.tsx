@@ -89,10 +89,10 @@ const Message: React.FC<MessageProps> = ({ message }) => {
   }, [message]); // Adjust dependencies if necessary
 
   return (
-    <div className="py-5 text-white">
-      <div className={`flex space-x-5 px-5 max-w-2xl mx-auto items-center ${isChatGPT ? "p-0" : "flex-row-reverse"}`}>
+    <div className="py-5 text-white max-w-3xl w-full">
+      <div className={`flex space-x-5 px-5 w-full mx-auto items-center ${isChatGPT ? "p-0" : "flex-row-reverse"}`}>
         <img src={message.user.avatar} alt='' className={`h-8 w-8 rounded-[20px] ${message.user.name==="ChatGPT"?"":"ml-3"} `} />
-        <span className={`${!isChatGPT ? "bg-[#2f2f2f] px-3 py-2 w-fit max-w-[80%] overflow-clip rounded-[20px] flex text-wrap text" : ""}`}>
+        <span className={`${!isChatGPT ? "bg-[#2f2f2f] px-3 py-2 w-fit max-w-[80%] overflow-clip rounded-[20px] flex text-wrap text" : "max-w-[85%]"}`}>
           {/* {isChatGPT ? <span dangerouslySetInnerHTML={{ __html: formattedText }} /> : message.text} */}
           {isChatGPT ? <span dangerouslySetInnerHTML={{ __html: formattedText }} />:message.text}
           
