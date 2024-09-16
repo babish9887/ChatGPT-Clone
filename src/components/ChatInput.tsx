@@ -149,25 +149,26 @@ function ChatInput({ id }: { id: string }) {
 
 
       <div className="bg-[#212121] text-gray-400 rounded-lg text-sm flex justify-center items-centerj w-full">
-        <form
-          onSubmit={sendMessage}
-          className="p-5 relative space-x-5 flex w-full lg:max-w-[45rem] sm:w-full"
-        >
-          <input
-            className="bg-[#2f2f2f] flex-1  p-4 rounded-[50px]  focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300 text-gray-200"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            type="text"
-            placeholder="Message ChatGPT..."
-          />
-          <button
-            disabled={!prompt || !session}
-            type="submit"
-            className={`absolute right-0 top-0  p-2  hover:text-slate-700 disabled:cursor-not-allowed rounded-full translate-y-[28px] transition-all duration-200  -translate-x-[29px] ${prompt? "bg-white":"bg-[#676767]"}`}
-          >
-            <ArrowUpIcon className="h-5 w-5 text-gray-800 " />
-          </button>
-        </form>
+      <form
+  onSubmit={sendMessage}
+  className="p-5 relative space-x-5 flex w-full lg:max-w-[45rem] sm:w-full"
+>
+<textarea
+  className="bg-[#2f2f2f] flex-1 px-5 py-3  pr-12 text-lg rounded-[50px] focus:outline-none disabled:cursor-not-allowed disabled:text-gray-300 text-gray-200 resize-none overflow-hidden scrollbar-hidden"
+  value={prompt}
+  onChange={(e) => setPrompt(e.target.value)}
+  placeholder="Message ChatGPT"
+  rows={1}
+/>
+
+  <button
+    disabled={!prompt || !session}
+    type="submit"
+    className={`absolute right-0 top-0 p-2 hover:text-slate-700 disabled:cursor-not-allowed rounded-full translate-y-[28px] transition-all duration-200 -translate-x-[29px] ${prompt ? "bg-white" : "bg-[#676767]"}`}
+  >
+    <ArrowUpIcon className="h-5 w-5 text-gray-800 " />
+  </button>
+</form>
 
         <div></div>
       </div>

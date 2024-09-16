@@ -17,15 +17,34 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
+      color: rgb(var(--foreground-rgb));
+      background: linear-gradient(
+          to bottom,
+          transparent,
+          rgb(var(--background-end-rgb))
+        )
+        rgb(var(--background-start-rgb));
+    }
+    
+    /* Scrollbar styles for Webkit browsers */
+    body::-webkit-scrollbar {
+      width: 5px;
+    }
+    
+    body::-webkit-scrollbar-track {
+      background: rgb(var(--background-start-rgb));
+    }
+    
+    body::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 10px;
+    }
+    
+    /* Scrollbar styles for Firefox */
+    body {
+      scrollbar-width: thin;
+      scrollbar-color: #2f2f2f #212121;
+    }
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -49,3 +68,9 @@ body {
     @apply transition-all duration-200 ease-out rounded-lg px-5 py-3 text-sm flex items-center justify-center space-x-2 hover:bg-gray-700/70 cursor-pointer text-gray-300
   }
 }
+.text {
+      display: inline-block;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+  }

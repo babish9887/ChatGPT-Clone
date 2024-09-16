@@ -81,16 +81,18 @@ const Message: React.FC<MessageProps> = ({ message }) => {
 
   useEffect(() => {
     // Scroll to the end of the container
-    if (messageEndRef.current) {
-      messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [message.text]); // Adjust dependencies if necessary
+    setTimeout(()=>{
+      if (messageEndRef.current) {
+        messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+  },500)
+  }, [message]); // Adjust dependencies if necessary
 
   return (
     <div className="py-5 text-white">
       <div className={`flex space-x-5 px-5 max-w-2xl mx-auto items-center ${isChatGPT ? "p-0" : "flex-row-reverse"}`}>
         <img src={message.user.avatar} alt='' className={`h-8 w-8 rounded-[20px] ${message.user.name==="ChatGPT"?"":"ml-3"} `} />
-        <span className={`${!isChatGPT ? "bg-[#2f2f2f] px-3 py-2 rounded-[20px]" : ""}`}>
+        <span className={`${!isChatGPT ? "bg-[#2f2f2f] px-3 py-2 w-fit max-w-[80%] overflow-clip rounded-[20px] flex text-wrap text" : ""}`}>
           {/* {isChatGPT ? <span dangerouslySetInnerHTML={{ __html: formattedText }} /> : message.text} */}
           {isChatGPT ? <span dangerouslySetInnerHTML={{ __html: formattedText }} />:message.text}
           
