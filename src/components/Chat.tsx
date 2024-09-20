@@ -18,7 +18,7 @@ function Chat({id}: {
             orderBy('createdAt', 'asc')
       ))
   return (
-    <div className=" mt-12 md:mt-0 flex justify-center items-center flex-1 flex-col h-screen overflow-y-auto ">
+    <div className=" mt-12 md:mt-0 flex justify-start items-center flex-1 flex-col h-screen overflow-y-auto ">
 
       {messages?.empty && (
             <div className=" gap-2 w-full flex items-center justify-center flex-col h-full">
