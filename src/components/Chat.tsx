@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { db } from "../../firebase";
 import Message from "./Message";
-import { ArrowDownCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 
 function Chat({id}: {

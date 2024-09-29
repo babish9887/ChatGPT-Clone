@@ -25,7 +25,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
             const res = result.response;
         const message = {
             text: res.text() || "ChatGPT was unable to find an answer for that!",
-            createdAt:new Date(),
+            createdAt:new Date(Date.now()),
             user: {
                 _id: "ChatGPT",
                 name: "ChatGPT",
